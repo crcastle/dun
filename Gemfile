@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', :git => 'git://github.com/rails/rails.git', :tag => 'v4.0.0.beta1'
+gem 'rails', '~> 4.0.0.rc1'
 
 gem 'unicorn'
 gem 'pg'
@@ -9,6 +9,7 @@ gem 'faye'
 gem 'thin'
 gem 'sync'
 gem 'devise', :git => 'git://github.com/plataformatec/devise.git', :branch => 'rails4'
+gem 'foreman'
 
 group :development do
   gem 'pry'
@@ -17,8 +18,8 @@ group :development do
 end
 
 group :assets do
-  gem 'sass-rails', '~> 4.0.0.beta1'
-  gem 'coffee-rails', '~> 4.0.0.beta1'
+  gem 'sass-rails', '~> 4.0.0.rc1'
+  gem 'coffee-rails', '~> 4.0.0'
   gem 'uglifier', '>= 1.0.3'
 end
 
