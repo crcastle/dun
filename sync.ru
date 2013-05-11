@@ -1,3 +1,5 @@
+$stdout.sync
+
 # Run with: rackup sync.ru -E production
 require "bundler/setup"
 require "yaml"
