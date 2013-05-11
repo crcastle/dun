@@ -1,4 +1,4 @@
-Finito::Application.configure do
+Dun::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -26,6 +26,6 @@ Finito::Application.configure do
   config.assets.debug = true
   config.action_mailer.default
   config.action_mailer.default_url_options = {
-    :host => 'finito.dev'
+    :host => 'dun.dev'
   }
 end

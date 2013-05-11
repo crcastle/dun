@@ -1,4 +1,4 @@
-Finito::Application.routes.draw do
+Dun::Application.routes.draw do
 
   devise_for :users
 
