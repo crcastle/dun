@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-SyncExample::Application.load_tasks
+Finito::Application.load_tasks

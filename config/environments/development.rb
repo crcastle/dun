@@ -1,4 +1,4 @@
-SyncExample::Application.configure do
+Finito::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -26,6 +26,6 @@ SyncExample::Application.configure do
   config.assets.debug = true
   config.action_mailer.default
   config.action_mailer.default_url_options = {
-    :host => 'sync-example.dev'
+    :host => 'finito.dev'
   }
 end
