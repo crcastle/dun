@@ -1,0 +1,33 @@
+<h1>Listing accomplishments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Tags</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @accomplishments.each do |accomplishment| %>
+      <tr>
+        <td><%= accomplishment.title %></td>
+        <td><%= accomplishment.description %></td>
+        <td><%= accomplishment.tags %></td>
+        <td><%= accomplishment.user_id %></td>
+        <td><%= link_to 'Show', accomplishment %></td>
+        <td><%= link_to 'Edit', edit_accomplishment_path(accomplishment) %></td>
+        <td><%= link_to 'Destroy', accomplishment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Accomplishment', new_accomplishment_path %>

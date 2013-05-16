@@ -11,46 +11,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130414144407) do
+ActiveRecord::Schema.define(version: 20130516064632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "accomplishments", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "tags",        array: true
+    t.integer  "user_id"
+    t.integer  "team_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "accomplishments", ["tags"], name: "accomplishmenttagsindex", using: :gin
+  add_index "accomplishments", ["team_id"], name: "index_accomplishments_on_team_id", using: :btree
+  add_index "accomplishments", ["user_id"], name: "index_accomplishments_on_user_id", using: :btree
+
   create_table "comments", force: true do |t|
     t.text     "message"
     t.integer  "user_id"
-    t.integer  "todo_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "parent_id"
+    t.integer  "accomplishment_id"
   end
 
-  add_index "comments", ["todo_id"], name: "index_comments_on_todo_id", using: :btree
+  add_index "comments", ["accomplishment_id"], name: "index_comments_on_accomplishment_id", using: :btree
+  add_index "comments", ["parent_id"], name: "index_comments_on_parent_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
-  create_table "projects", force: true do |t|
+  create_table "likes", force: true do |t|
+    t.integer  "accomplishment_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "likes", ["accomplishment_id"], name: "index_likes_on_accomplishment_id", using: :btree
+
+  create_table "teams", force: true do |t|
+    t.integer  "user_id"
     t.string   "name"
-    t.integer  "user_id"
-    t.integer  "todos_count", default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
-
-  create_table "todos", force: true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.integer  "user_id"
-    t.integer  "project_id"
-    t.integer  "comments_count", default: 0,     null: false
-    t.boolean  "complete",       default: false, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "todos", ["complete"], name: "index_todos_on_complete", using: :btree
-  add_index "todos", ["project_id"], name: "index_todos_on_project_id", using: :btree
-  add_index "todos", ["user_id"], name: "index_todos_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"

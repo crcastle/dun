@@ -1,5 +1,11 @@
 Dun::Application.routes.draw do
 
+  resources :teams
+
+  resources :likes
+
+  resources :accomplishments
+
   devise_for :users
 
   devise_scope :user do
