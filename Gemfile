@@ -10,6 +10,7 @@ gem 'thin'
 gem 'sync'
 gem 'devise', :git => 'git://github.com/plataformatec/devise.git', :branch => 'rails4'
 gem 'foreman'
+gem 'pg_array_parser' # to speed up postgresql array serialization and deserialization
 
 group :development do
   gem 'pry'

@@ -101,6 +101,7 @@ GEM
     multi_json (1.7.2)
     orm_adapter (0.4.0)
     pg (0.15.1)
+    pg_array_parser (0.0.8)
     polyglot (0.3.3)
     pry (0.9.12)
       coderay (~> 1.0.5)
@@ -188,6 +189,7 @@ DEPENDENCIES
   foreman
   jquery-rails
   pg
+  pg_array_parser
   pry
   pry-remote
   pusher
