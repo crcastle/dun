@@ -48,6 +48,11 @@ GEM
     arel (4.0.0)
     atomic (1.1.9)
     bcrypt-ruby (3.0.1)
+    better_errors (0.8.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+    binding_of_caller (0.7.1)
+      debug_inspector (>= 0.0.1)
     builder (3.1.4)
     coderay (1.0.9)
     coffee-rails (4.0.0)
@@ -59,6 +64,7 @@ GEM
     coffee-script-source (1.6.2)
     cookiejar (0.3.0)
     daemons (1.1.9)
+    debug_inspector (0.0.2)
     dotenv (0.7.0)
     em-http-request (1.0.3)
       addressable (>= 2.2.3)
@@ -183,6 +189,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  better_errors
+  binding_of_caller
   coffee-rails (~> 4.0.0)
   devise!
   faye
