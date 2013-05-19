@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_action :find_resources
 
   def index
-    @comments = @todo.comments
+    @comments = @accomplishment.comments
 
     respond_to do |format|
       format.html
@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
   end
 
   def show
-    @comment = @todo.comments.find(params[:id])
+    @comment = @accomplishment.comments.find(params[:id])
 
     respond_to do |format|
       format.html
@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
   end
 
   def new
-    @comment = @todo.comments.build
+    @comment = @accomplishment.comments.build
 
     respond_to do |format|
       format.html
@@ -34,17 +34,17 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = @todo.comments.build(comment_params)
+    @comment = @accomplishment.comments.build(comment_params)
     @comment.user = current_user
     respond_to do |format|
       if @comment.save
-        sync_new @comment, scope: @todo
+        sync_new @comment, scope: @accomplishment
         @comment = nil
-        sync_update [@todo, @todo.project]
-        format.html { redirect_to [@project, @todo], notice: 'Comment was successfully created.' }
+        sync_update @accomplishment
+        format.html { redirect_to @accomplishment, notice: 'Comment was successfully created.' }
         format.js { head :no_content }
       else
-        sync_update @todo
+        sync_update @accomplishment
         format.html { render action: "new" }
         format.js { head :no_content }
       end
@@ -52,11 +52,11 @@ class CommentsController < ApplicationController
   end
 
   def update
-    @comment = @todo.comments.find(params[:id])
+    @comment = @accomplishment.comments.find(params[:id])
 
     respond_to do |format|
       if @comment.update_attributes(comment_params)
-        format.html { redirect_to [@project, @todo], notice: 'Comment was successfully updated.' }
+        format.html { redirect_to @accomplishment, notice: 'Comment was successfully updated.' }
         format.js { head :no_content }
       else
         format.html { render action: "edit" }
@@ -66,15 +66,15 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = @todo.comments.find(params[:id])
+    @comment = @accomplishment.comments.find(params[:id])
     @comment.destroy
     sync_destroy @comment
-    sync_update @todo.project
+    # sync_update @todo.project
     respond_to do |format|
-      format.html { redirect_to [@project, @todo] }
+      format.html { redirect_to @accomplishment }
       format.js { head :no_content }
     end
-  end 
+  end
 
 
   private
@@ -84,7 +84,6 @@ class CommentsController < ApplicationController
   end
 
   def find_resources
-    @project = current_user.projects.find(params[:project_id])
-    @todo = @project.todos.find(params[:todo_id])
+    @accomplishment = current_user.accomplishments.find(params[:accomplishment_id])
   end
 end

@@ -1,15 +1,19 @@
 #= require jquery
 #= require jquery_ujs
+#= require jquery-ui
 #= require twitter/bootstrap
 #= require sync
 #= require_tree .
 
 
-class Sync.UserListRow extends Sync.View
+class Sync.AccomplishmentListRow extends Sync.View
 
-  beforeUpdate: (html, data) ->
-    @$el.fadeOut 'slow', => @update(html)
+  # beforeUpdate: (html, data) ->
+    # @$el.fadeOut => @update(html)
 
-  afterUpdate: -> @$el.fadeIn('slow')
+  afterUpdate: ->
+    @$el.effect("highlight",{color:"lightyellow"},1000)
 
-  beforeRemove: -> @$el.fadeOut 'slow', => @remove()
+  beforeRemove: ->
+    @$el.css('background-color', 'indianred')
+    @$el.fadeOut 'slow', => @remove()

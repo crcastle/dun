@@ -1,6 +1,6 @@
 <h1>Editing accomplishment</h1>
 
-<%= render 'form' %>
+<%= render 'form', locals: {accomplishment: @accomplishment} %>
 
 <%= link_to 'Show', @accomplishment %> |
 <%= link_to 'Back', accomplishments_path %>

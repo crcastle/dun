@@ -1,19 +1,19 @@
-@Todo =
-  
-  init: -> @bind()
+# @Todo =
 
-  bind: ->
-    $("[data-name=new-todo-form]").on 'ajax:complete', -> @reset()
-    $("[data-name=todos-list]").on "click", "[data-action=edit-todo]", (e) =>
-      e.preventDefault()
-      @toggleEditRow $(e.target).parents("[data-name=todo-row]")
+#   init: -> @bind()
 
-
-  toggleEditRow: ($parentRow) ->
-    $parentRow.addClass("edit")
-    $parentRow.find("input[type=text]").focus()
+#   bind: ->
+#     $("[data-name=new-todo-form]").on 'ajax:complete', -> @reset()
+#     $("[data-name=todos-list]").on "click", "[data-action=edit-todo]", (e) =>
+#       e.preventDefault()
+#       @toggleEditRow $(e.target).parents("[data-name=todo-row]")
 
 
+#   toggleEditRow: ($parentRow) ->
+#     $parentRow.addClass("edit")
+#     $parentRow.find("input[type=text]").focus()
 
-$ ->
-  Todo.init()
+
+
+# $ ->
+#   Todo.init()

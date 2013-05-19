@@ -1,0 +1,14 @@
+<ul class="breadcrumb">
+  <li>
+    <%= link_to 'Dashboard', root_path %>
+    <span class="divider">/</span>
+  </li>
+  <li>
+    <%= link_to accomplishment.team.name, accomplishment.team %>
+    <span class="divider">/</span>
+  </li>
+  <li class="active">
+    <%= accomplishment.title %>
+  </li>
+
+</ul>

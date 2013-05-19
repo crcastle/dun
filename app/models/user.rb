@@ -8,4 +8,5 @@ class User < ActiveRecord::Base
   has_many :accomplishments
   has_many :comments, through: :accomplishments
   has_many :likes, through: :accomplishments
+  has_and_belongs_to_many :teams
 end

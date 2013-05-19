@@ -1,24 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @accomplishment.title %>
-</p>
+<%= content_for :breadcrumbs do %>
+  <%= sync partial: 'accomplishment_breadcrumbs', resource: @accomplishment %>
+<% end %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @accomplishment.description %>
-</p>
-
-<p>
-  <strong>Tags:</strong>
-  <%= @accomplishment.tags %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @accomplishment.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_accomplishment_path(@accomplishment) %> |
-<%= link_to 'Back', accomplishments_path %>
+<div class="row-fluid">
+  <div class="span12">
+    <%= sync partial: 'accomplishment_show_form', resource: @accomplishment %>
+    <div class="row-fluid">
+      <div class="span12">
+        <% @accomplishment.comments.ordered.each do |comment| %>
+          <%= sync partial: 'accomplishment_comment', resource: comment %>
+          <br/>
+        <% end %>
+        <%= sync_new partial: 'accomplishment_comment', resource: Comment.new, scope: @accomplishment %>
+      </div>
+    </div>
+    <br/>
+    <br/>
+    <%= sync partial: 'accomplishment_comment_form', resource: @accomplishment %>
+  </div>
+</div>

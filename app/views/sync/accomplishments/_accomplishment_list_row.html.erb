@@ -1,0 +1,45 @@
+<tr data-name="accomplishment-row" class="accomplishment-row">
+  <td class="team">
+    <%= link_to accomplishment.team do %>
+      <%= accomplishment.team.name %>
+    <% end %>
+  </td>
+  <td class="title">
+    <div class="static">
+      <%= link_to accomplishment do %>
+        <%= accomplishment.title %>
+      <% end %>
+    </div>
+    <div class="editable hide">
+      <%= simple_form_for accomplishment, remote: true  do |f| %>
+        <%= f.input :title, label: false %>
+        <%= f.button :submit, "done" %>
+      <% end %>
+    </div>
+  </td>
+  <td class="actions">
+    <div class="static">
+      <%= link_to '#', "data-action" => "edit-accomplishment" do %>
+        <i class="icon-edit"> edit</i>
+      <% end %>
+      |
+      <%= link_to accomplishment_path(accomplishment), method: :delete, remote: true, data: { confirm: 'Are you sure?' }  do %>
+        <i class="icon-remove-circle"></i>
+      <% end %>
+      |
+      <%= link_to new_accomplishment_comment_path(accomplishment) do %>
+        <i class="icon-comment"> comment</i>
+      <% end %>
+      |
+      <% if like = accomplishment.like_for(current_user) %>
+        <%= link_to accomplishment_like_path(accomplishment, like), method: :delete, remote: true do %>
+          <i class="icon-thumbs-up" style="color: blue;"></i>
+        <% end %>
+      <% else %>
+        <%= link_to accomplishment_likes_path(accomplishment), method: :post, remote: true do %>
+          <i class="icon-thumbs-up"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </td>
+</tr>

@@ -1,13 +1,10 @@
-<h1>Listing accomplishments</h1>
+<h1>Accomplishments</h1>
 
-<table>
+<table class="table" data-name="accomplishments-list">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Tags</th>
-      <th>User</th>
-      <th></th>
+      <th>Team</th>
+      <th>Accomplishment</th>
       <th></th>
       <th></th>
     </tr>
@@ -15,19 +12,12 @@
 
   <tbody>
     <% @accomplishments.each do |accomplishment| %>
-      <tr>
-        <td><%= accomplishment.title %></td>
-        <td><%= accomplishment.description %></td>
-        <td><%= accomplishment.tags %></td>
-        <td><%= accomplishment.user_id %></td>
-        <td><%= link_to 'Show', accomplishment %></td>
-        <td><%= link_to 'Edit', edit_accomplishment_path(accomplishment) %></td>
-        <td><%= link_to 'Destroy', accomplishment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <%= sync partial: 'accomplishment_list_row', resource: accomplishment %>
     <% end %>
+    <%= sync_new partial: 'accomplishment_list_row', resource: Accomplishment.new, scope: @user %>
   </tbody>
 </table>
 
-<br>
+<br />
 
 <%= link_to 'New Accomplishment', new_accomplishment_path %>

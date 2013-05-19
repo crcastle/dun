@@ -3,7 +3,7 @@ class TeamsController < ApplicationController
 
   # GET /teams
   def index
-    @teams = Team.all
+    @teams = current_user.teams
   end
 
   # GET /teams/1

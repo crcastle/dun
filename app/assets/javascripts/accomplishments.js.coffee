@@ -1,3 +1,19 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+@Accomplishment =
+
+  init: -> @bind()
+
+  bind: ->
+    $("[data-name=new-accomplishment-form]").on 'ajax:complete', -> @reset()
+    $("[data-name=accomplishments-list]").on "click", "[data-action=edit-accomplishment]", (e) =>
+      e.preventDefault()
+      @toggleEditRow $(e.target).parents("[data-name=accomplishment-row]")
+
+
+  toggleEditRow: ($parentRow) ->
+    $parentRow.addClass("edit")
+    $parentRow.find("input[type=text]").focus()
+
+
+
+$ ->
+  Accomplishment.init()

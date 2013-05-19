@@ -7,14 +7,14 @@
 
 <p>
   <b>User:</b>
-  <%= @comment.user_id %>
+  <%= current_user.user_id %>
 </p>
 
 <p>
   <b>Todo:</b>
-  <%= @comment.todo_id %>
+  <%= @comment.accomplishment_id %>
 </p>
 
 
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+<%= link_to 'Edit', edit_accomplishment_comment_path(@comment) %> |
+<%= link_to 'Back', accomplishment_comments_path %>
