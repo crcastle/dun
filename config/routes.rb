@@ -19,4 +19,6 @@ Dun::Application.routes.draw do
   end
 
   resources :users
+
+  post 'email', to: 'emails#post'
 end
