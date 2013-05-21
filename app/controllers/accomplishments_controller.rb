@@ -2,10 +2,12 @@ class AccomplishmentsController < ApplicationController
   before_action :set_accomplishment, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
+  enable_sync only: [:create, :update, :destroy]
+
   # GET /accomplishments
   def index
     teams = current_user.teams
-    @accomplishments = Accomplishment.where('team_id in (?)', teams)
+    @accomplishments = Accomplishment.where('team_id in (?)', teams) | Accomplishment.where('team_id is null').where(user: current_user)
   end
 
   # GET /accomplishments/1
@@ -38,7 +40,7 @@ class AccomplishmentsController < ApplicationController
 
     respond_to do |format|
       if @accomplishment.save
-        sync_new @accomplishment, scope: @team
+        sync_new @accomplishment #, scope: @team
         sync_update @accomplishment.team.reload
 
         format.html { redirect_to @accomplishment, notice: 'Accomplishment was successfully created.' }

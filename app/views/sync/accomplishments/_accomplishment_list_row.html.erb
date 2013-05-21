@@ -1,7 +1,7 @@
 <tr data-name="accomplishment-row" class="accomplishment-row">
   <td class="team">
     <%= link_to accomplishment.team do %>
-      <%= accomplishment.team.name %>
+      <%= accomplishment.team ? accomplishment.team.name : "" %>
     <% end %>
   </td>
   <td class="title">
@@ -31,7 +31,7 @@
         <i class="icon-comment"> comment</i>
       <% end %>
       |
-      <% if like = accomplishment.like_for(current_user) %>
+      <% if false %>
         <%= link_to accomplishment_like_path(accomplishment, like), method: :delete, remote: true do %>
           <i class="icon-thumbs-up" style="color: blue;"></i>
         <% end %>
