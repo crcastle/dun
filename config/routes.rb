@@ -20,5 +20,9 @@ Dun::Application.routes.draw do
 
   resources :users
 
+  # Receives email HTTP requests from Mailgun
   post 'email', to: 'emails#post'
+
+  # For the sync gem
+  get 'sync/refetch', controller: 'sync', action: 'refetch'
 end

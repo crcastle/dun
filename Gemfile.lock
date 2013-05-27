@@ -156,7 +156,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    sync (0.1.12)
+    sync (0.2.0)
       em-http-request
     thin (1.5.1)
       daemons (>= 1.0.9)

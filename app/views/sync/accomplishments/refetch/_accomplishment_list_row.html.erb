@@ -31,7 +31,7 @@
         <i class="icon-comment"> comment</i>
       <% end %>
       |
-      <% if false %>
+      <% if current_user and like = accomplishment.like_for(current_user) %>
         <%= link_to accomplishment_like_path(accomplishment, like), method: :delete, remote: true do %>
           <i class="icon-thumbs-up" style="color: blue;"></i>
         <% end %>

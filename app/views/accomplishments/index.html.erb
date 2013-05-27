@@ -12,9 +12,9 @@
 
   <tbody>
     <% @accomplishments.each do |accomplishment| %>
-      <%= sync partial: 'accomplishment_list_row', resource: accomplishment, scope: accomplishment.team %>
+      <%= sync partial: 'accomplishment_list_row', resource: accomplishment, scope: accomplishment.team, refetch: true %>
     <% end %>
-    <%= sync_new partial: 'accomplishment_list_row', resource: Accomplishment.new %>
+    <%= sync_new partial: 'accomplishment_list_row', resource: Accomplishment.new, refetch: true %>
   </tbody>
 </table>
 
